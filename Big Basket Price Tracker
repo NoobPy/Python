@@ -9,20 +9,20 @@ from tabulate import tabulate
 
 chromedriver_path = 'C:/Users/tiwar/OneDrive/Desktop/Python/chromedriver.exe'
 
-# Create a ChromeOptions object
+
 options = webdriver.ChromeOptions()
 
 options.add_argument('--headless') #this will allow chrome to run without opening chrome
 options.add_argument('--disable-gpu') #no need to engage gpu making code run faster
 options.add_argument('--blink-settings=imagesEnabled=false') #no need to load images making code run faster
 
-# Specify the path to the ChromeDriver executable using service_args
+
 service_args = ['--executable-path=' + chromedriver_path]
 service = ChromeService(service_args=service_args)
 
-data={'Name': ['Ginger','Cabbage','Cauliflower','Aata BB Royal','Aata Aashirwad','Bheendi','Potato','Tomato','Onion','Cluster Beans'],
-'Cut_off_Price':[75,32,20,355,293,30,34,21,31,65],
-'URL':['https://www.bigbasket.com/pd/10000119/fresho-ginger-500-g/?nc=as','https://www.bigbasket.com/pd/10000066/fresho-cabbage-1-pc/?nc=as','https://www.bigbasket.com/pd/10000074/fresho-cauliflower-1-pc/?nc=as','https://www.bigbasket.com/pd/40099239/bb-royal-chakki-fresh-wheat-atta-fortified-10-kg/?nc=as','https://www.bigbasket.com/pd/126903/aashirvaad-atta-whole-wheat-5-kg-pouch/?nc=as','https://www.bigbasket.com/pd/10000142/fresho-ladies-finger-1-kg/?nc=as','https://www.bigbasket.com/pd/10000159/fresho-potato-1-kg/?nc=as','https://www.bigbasket.com/pd/10000203/fresho-tomato-local-1-kg/?nc=as','https://www.bigbasket.com/pd/10000148/fresho-onion-1-kg/?nc=as','https://www.bigbasket.com/pd/10000039/fresho-beans-cluster-1-kg/?nc=as']
+data={'Name': ['Cabbage','Cauliflower','Aata BB Royal','Bheendi','Potato','Tomato','Onion','Cluster Beans'],
+'Cut_off_Price':[32,20,355,30,34,21,31,65],
+'URL':['https://www.bigbasket.com/pd/10000066/fresho-cabbage-1-pc/?nc=as','https://www.bigbasket.com/pd/10000074/fresho-cauliflower-1-pc/?nc=as','https://www.bigbasket.com/pd/40099239/bb-royal-chakki-fresh-wheat-atta-fortified-10-kg/?nc=as','https://www.bigbasket.com/pd/10000142/fresho-ladies-finger-1-kg/?nc=as','https://www.bigbasket.com/pd/10000159/fresho-potato-1-kg/?nc=as','https://www.bigbasket.com/pd/10000203/fresho-tomato-local-1-kg/?nc=as','https://www.bigbasket.com/pd/10000148/fresho-onion-1-kg/?nc=as','https://www.bigbasket.com/pd/10000039/fresho-beans-cluster-1-kg/?nc=as']
 }
 df1=pd.DataFrame(data)
 df2=df1.copy()
@@ -38,7 +38,7 @@ for i in range(len(df2)):
        
         page_source = driver.page_source
 
-        # Parse the page source with BeautifulSoup
+        
         soup = BeautifulSoup(page_source, 'html.parser') #convert the webpage to html format
 
         
@@ -62,6 +62,9 @@ smtp_server = "smtp.gmail.com"
 smtp_port = 587
 smtp_username = "pneeraj728@gmail.com"
 smtp_password = "Enter your password"
+#note smtp_password is not your google password follow below youtube tutorials to generate smtp password
+#https://www.youtube.com/watch?v=I9x0w8cjR_o
+#https://www.youtube.com/watch?v=qpAI5qZR9ms
 
 message = MIMEMultipart()
 message["From"] = sender_email
